@@ -106,6 +106,10 @@
       <p><input type="text" id="input_position" placeholder="广州市内" value="广州市内"/></p>
       <button onclick="render()">生成</button>
     </div>
+    <br />
+    
+    <p>仅用于测试，使用后造成的任何后果均由使用者承担。</p>
+    <p>使用本地存储，点击生成后将会保存信息到浏览器本地，以供下次使用时，无需再次输入</p>
 
     <script src="./static/jquery.min.js.download"></script>
 
@@ -123,14 +127,22 @@
 
       function render() {
         console.log("enter render function");
-        $("#fill_name").html($("#input_name").val());
-        $("#fill_faculty").html($("#input_faculty").val());
-        $("#fill_class").html($("#input_class").val());
-        $("#fill_id").html($("#input_id").val());
+        var _name = $("#input_name").val();
+        var _faculty = $("#input_faculty").val();
+        var _class = $("#input_class").val()
+        var _id = $("#input_id").val()
+        var _inorout = $("#input_inorout").val()
+        var _type = $("#input_type").val()
+        var _position = $("#input_position").val()
 
-        $("#fill_inorout").html($("#input_inorout").val());
-        $("#fill_type").html($("#input_type").val());
-        $("#fill_position").html($("#input_position").val());
+        $("#fill_name").html(_name);
+        $("#fill_faculty").html(_faculty);
+        $("#fill_class").html(_class);
+        $("#fill_id").html(_id);
+
+        $("#fill_inorout").html(_inorout);
+        $("#fill_type").html(_type);
+        $("#fill_position").html(_position);
         
         var m = new Date();
         strDate = m.getFullYear() + '-'
@@ -150,6 +162,14 @@
 
         $("#str").html(df(strtime) + "-");
         $("#stp").html(df(stptime));
+
+        localStorage.setItem("_name", _name);
+        localStorage.setItem("_faculty", _faculty);
+        localStorage.setItem("_class", _class);
+        localStorage.setItem("_id", _id);
+        // localStorage.setItem("_inorout", _inorout);
+        // localStorage.setItem("_type", _type);
+        // localStorage.setItem("_position", _position);
       };
 
       $(function () {
@@ -158,6 +178,32 @@
 
         $("#str").html(df(strtime) + "-");
         $("#stp").html(df(stptime));
+
+        var _name = localStorage.getItem("_name");
+        var _faculty = localStorage.getItem("_faculty");
+        var _class = localStorage.getItem("_class");
+        var _id = localStorage.getItem("_id");
+        // var _inorout = localStorage.getItem("_inorout");
+        // var _type = localStorage.getItem("_type");
+        // var _position = localStorage.getItem("_position");
+        
+        if (_name == null) reutrn;
+        $("#fill_name").html(_name);
+        $("#fill_faculty").html(_faculty);
+        $("#fill_class").html(_class);
+        $("#fill_id").html(_id);
+
+        document.getElementById("input_name").setAttribute("value", _name);
+        document.getElementById("input_faculty").setAttribute("value", _faculty);
+        document.getElementById("input_class").setAttribute("value", _class);
+        document.getElementById("input_id").setAttribute("value", _id);
+        // $("#input_name").html(_name);
+        // $("#input_faculty").html(_faculty);
+        // $("#input_class").html(_class);
+        // $("#input_id").html(_id);
+        // $("#fill_inorout").html(_inorout);
+        // $("#fill_type").html(_type);
+        // $("#fill_position").html(_position);
       });
 
     </script>
