@@ -95,7 +95,7 @@
     <br />
     <br />
     <br />
-    <div>
+    <div style="padding: 5%;">
       <p><input type="text" id="input_name" placeholder="姓名" value="蔡徐坤"/></p>
       <p><input type="text" id="input_faculty" placeholder="学院" value="生物与食品工程学院"/></p>
       <p><input type="text" id="input_class" placeholder="班级" value="20食品"/></p>
@@ -105,11 +105,12 @@
       <p><input type="text" id="input_type" placeholder="事假 病假" value="事假"/></p>
       <p><input type="text" id="input_position" placeholder="广州市内" value="广州市内"/></p>
       <button onclick="render()">生成</button>
+      <button onclick="remove_localstorage()">清除本地存储</button>
+      <br />
+      <p>仅用于测试，使用后造成的任何后果均由使用者承担。</p>
     </div>
-    <br />
     
-    <p>仅用于测试，使用后造成的任何后果均由使用者承担。</p>
-    <p>使用本地存储，点击生成后将会保存信息到浏览器本地，以供下次使用时，无需再次输入</p>
+
 
     <script src="./static/jquery.min.js.download"></script>
 
@@ -123,7 +124,7 @@
         strDate += date.getDate() + "日";
         strDate += date.getHours() + "时";
         return strDate;
-      };
+      }
 
       function render() {
         console.log("enter render function");
@@ -170,7 +171,14 @@
         // localStorage.setItem("_inorout", _inorout);
         // localStorage.setItem("_type", _type);
         // localStorage.setItem("_position", _position);
-      };
+      }
+
+      function remove_localstorage() {
+        localStorage.removeItem('_name');
+        localStorage.removeItem('_faculty');
+        localStorage.removeItem('_class');
+        localStorage.removeItem('_id');
+      }
 
       $(function () {
         var strtime = $("#11").val();
