@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>我的请假凭证</title>
+    <link rel="shortcut icon" href="./static/favicon.ico" />
+    <link href="./static/bootstrap.min.css" rel="stylesheet" />
+    <link href="./static/font-awesome.min.css" rel="stylesheet" />
+    <!-- bootstrap-table 表格插件样式 -->
+    <link href="./static/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="./static/animate.css" rel="stylesheet" />
+    <link href="./static/style.css" rel="stylesheet" />
+    <link href="./static/ry-ui.css" rel="stylesheet" />
+
+    <link href="./static/bootstrap-select.css" rel="stylesheet" />
+  </head>
+  <body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <form class="form-horizontal m" id="form-qjt-add">
+        <input name="id" type="hidden" id="id" value="1092529" />
+        <input
+          id="11"
+          value="Tue Oct 01 06:00:00 GMT+08:00 2022"
+          type="hidden"
+        />
+        <input
+          id="12"
+          value="Tue Oct 01 22:00:00 GMT+08:00 2022"
+          type="hidden"
+        />
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                <h3 style="font-size:18px; bold;">广东二师请假审批通过凭证</h3>
+              </div>
+              <div class="ibox-content">
+                <div class="row">
+                  <div
+                    class="col-sm-2 b-r"
+                    style="width: 45%; float: left; font-size: 16px"
+                  >
+                    <p class="form-header" id="fill_name">蔡徐坤</p>
+                    <p class="form-header" id="fill_faculty">生物与食品工程学院</p>
+                    <p class="form-header" id="fill_class">20食品</p>
+                    <p class="form-header" id="fill_id">20xxxxxxxxx</p>
+                    <h3 style="font-size:30px; bold;" id="fill_inorout">离校</h3>
+                  </div>
+                  <div class="col-sm-4" style="width: 55%; float: left">
+                    <p></p>
+                    <h3 style="font-size:18px; bold;" id="fill_type">事假</h3>
+                    <p></p>
+                    <p id="fill_position">广州市内</p>
+                    <p id="str"></p>
+                    <p id="stp"></p>
+                    <p><img class="img-lg" src="./static/qrcode.png" /></p>
+                  </div>
+                </div>
+              </div>
+              <div class="ibox-title">
+                <h3 style="font-size: 20px" id="fill_current">
+                  2022-10-01 00:00:00
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+      <p><input type="text" id="input_name" placeholder="姓名" value="蔡徐坤"/></p>
+      <p><input type="text" id="input_faculty" placeholder="学院" value="生物与食品工程学院"/></p>
+      <p><input type="text" id="input_class" placeholder="班级" value="20食品"/></p>
+      <p><input type="text" id="input_id" placeholder="学号" value="20xxxxxxxxx"/></p>
+
+      <p><input type="text" id="input_inorout" placeholder="离校 进校" value="离校"/></p>
+      <p><input type="text" id="input_type" placeholder="事假 病假" value="事假"/></p>
+      <p><input type="text" id="input_position" placeholder="广州市内" value="广州市内"/></p>
+      <button onclick="render()">生成</button>
+    </div>
+
+    <script src="./static/jquery.min.js.download"></script>
+
+    <script>var ctx = "\/";</script>
+
+    <script type="text/javascript">
+      function df(date) {
+        var date = new Date(date);
+        var strDate = date.getFullYear() + "年";
+        strDate += date.getMonth() + 1 + "月";
+        strDate += date.getDate() + "日";
+        strDate += date.getHours() + "时";
+        return strDate;
+      };
+
+      function render() {
+        console.log("enter render function");
+        $("#fill_name").html($("#input_name").val());
+        $("#fill_faculty").html($("#input_faculty").val());
+        $("#fill_class").html($("#input_class").val());
+        $("#fill_id").html($("#input_id").val());
+
+        $("#fill_inorout").html($("#input_inorout").val());
+        $("#fill_type").html($("#input_type").val());
+        $("#fill_position").html($("#input_position").val());
+        
+        var m = new Date();
+        strDate = m.getFullYear() + '-'
+                + ('0' + (m.getMonth()+1)).slice(-2) + '-'
+                + ('0' + m.getDate()).slice(-2) + ' ';
+        
+        strDatetime = strDate
+                + ('0' + m.getHours()).slice(-2) + ':'
+                + ('0' + m.getMinutes()).slice(-2) + ':'
+                + ('0' + m.getSeconds()).slice(-2);
+
+        $("#fill_current").html(strDatetime);
+        console.log(strDatetime);
+
+        var strtime = strDate + " 06:00:00"
+        var stptime = strDate + " 22:00:00"
+
+        $("#str").html(df(strtime) + "-");
+        $("#stp").html(df(stptime));
+      };
+
+      $(function () {
+        var strtime = $("#11").val();
+        var stptime = $("#12").val();
+
+        $("#str").html(df(strtime) + "-");
+        $("#stp").html(df(stptime));
+      });
+
+    </script>
+  </body>
+</html>
